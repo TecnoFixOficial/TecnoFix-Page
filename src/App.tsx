@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UNDER_CONSTRUCTION } from '@/config'
 import { ENABLED_PAGES } from '@/navigation'
@@ -6,6 +7,13 @@ import { Layout } from '@/components/Layout'
 import { NotFound } from '@/pages/NotFound'
 
 function App() {
+  // Título de la pestaña según el modo construcción.
+  useEffect(() => {
+    document.title = UNDER_CONSTRUCTION
+      ? 'TecnoFix — Sitio en construcción'
+      : 'TecnoFix'
+  }, [])
+
   // Interruptor del modo "Sitio en construcción" (ver src/config.ts).
   if (UNDER_CONSTRUCTION) {
     return <UnderConstruction />
