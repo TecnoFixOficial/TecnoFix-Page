@@ -57,10 +57,12 @@ export function Hero() {
           </div>
         </div>
 
+        
         {/* Columna visual: marco para foto real */}
+        
+        {/*
         <div className="relative animate-fade-up [animation-delay:200ms]">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-brand-ink/5 bg-gradient-to-br from-brand-purple to-brand-ink shadow-xl">
-            {/* Placeholder — aquí va una foto real del taller/trabajos */}
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center text-white/80">
               <span className="font-display text-2xl uppercase tracking-wide">
                 TecnoFix
@@ -70,8 +72,7 @@ export function Hero() {
               </span>
             </div>
           </div>
-
-          {/* Tarjeta flotante de acento */}
+                
           <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-brand-ink/5 bg-white px-5 py-3 shadow-lg sm:block">
             <p className="font-display text-2xl text-brand-purple">+500</p>
             <p className="font-sans text-xs text-brand-ink/60">
@@ -79,6 +80,8 @@ export function Hero() {
             </p>
           </div>
         </div>
+        */}
+        
       </div>
     </section>
   )
