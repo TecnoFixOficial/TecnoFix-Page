@@ -15,6 +15,7 @@ import { ServicioTecnico } from '@/pages/ServicioTecnico'
 import { Desarrollo } from '@/pages/Desarrollo'
 import { Contacto } from '@/pages/Contacto'
 import { AvisoPrivacidad } from '@/pages/AvisoPrivacidad'
+import { Links } from '@/pages/Links'
 
 export type PageDef = {
   /** Ruta (URL) de la página. */
@@ -29,6 +30,10 @@ export type PageDef = {
   showInNav: boolean
   /** Para el resaltado del menú: coincidencia exacta (solo el inicio). */
   end?: boolean
+  /** Si es false, la página se muestra sola (sin navbar ni footer). Por defecto true. */
+  withLayout?: boolean
+  /** Si es true, la página funciona incluso en modo construcción (ej. destino de un QR). */
+  alwaysAvailable?: boolean
 }
 
 export const PAGES: PageDef[] = [
@@ -68,10 +73,24 @@ export const PAGES: PageDef[] = [
     enabled: true,
     showInNav: false, // accesible por URL y footer, pero no en el menú
   },
+  {
+    path: '/links',
+    label: 'Links',
+    Component: Links,
+    enabled: true,
+    showInNav: false, // destino del código QR, no aparece en el menú
+    withLayout: false, // página independiente estilo "link in bio"
+    alwaysAvailable: true, // el QR siempre debe funcionar, aun en construcción
+  },
 ]
 
 /** Páginas activas (con URL y ruta). */
 export const ENABLED_PAGES = PAGES.filter((p) => p.enabled)
+
+/** Páginas que funcionan incluso en modo construcción. */
+export const ALWAYS_AVAILABLE_PAGES = ENABLED_PAGES.filter(
+  (p) => p.alwaysAvailable,
+)
 
 /** Páginas que se muestran en el menú del navbar. */
 export const NAV_PAGES = ENABLED_PAGES.filter((p) => p.showInNav)
