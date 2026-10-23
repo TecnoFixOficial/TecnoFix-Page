@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TecnoFix</title>
-    <meta
-      name="description"
-      content="TecnoFix — Servicio técnico y desarrollo de software. Sitio web en construcción."
+    <title>%SITE_TITLE%</title>
+    <meta name="description" content="%SITE_DESCRIPTION%" />
+
+    <!-- Fuentes de marca: Anton (títulos) + Montserrat (texto, la misma de lonas y tarjetas) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
     />
+
+    <!-- Datos del negocio para buscadores (se generan en vite.config.ts) -->
+    <script type="application/ld+json">%SITE_JSON_LD%</script>
   </head>
   <body>
     <div id="root"></div>

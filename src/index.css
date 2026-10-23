@@ -1,5 +1,4 @@
-/* Fuentes de marca: Anton (títulos) + Nunito (texto) */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+/* Fuentes de marca (Anton + Montserrat): se cargan desde index.html. */
 
 @tailwind base;
 @tailwind components;
@@ -13,6 +12,18 @@
 
   body {
     @apply bg-brand-cream font-sans text-brand-ink;
+  }
+
+  /* Foco visible al navegar con teclado (no aparece al hacer clic). */
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.purple');
+    outline-offset: 3px;
+  }
+
+  /* Sobre fondos oscuros (footer, franjas púrpura) el foco va en cian. */
+  .bg-brand-ink :focus-visible,
+  .bg-brand-purple :focus-visible {
+    outline-color: theme('colors.brand.cyan');
   }
 
   /* Accesibilidad: desactiva animaciones si el usuario lo prefiere */

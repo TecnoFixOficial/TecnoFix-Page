@@ -7,7 +7,8 @@ export default {
         // Identidad de marca TecnoFix
         brand: {
           purple: '#2D2B6E', // Púrpura principal
-          cyan: '#02C5CE', // Cian de acento
+          cyan: '#02C5CE', // Cian de acento (fondos y detalles, no texto sobre claro)
+          'cyan-deep': '#007A80', // Cian oscuro: solo para TEXTO sobre fondos claros
           cream: '#F4F4FA', // Fondo suave (crema)
           ink: '#1B1A40', // Texto oscuro (tinta)
         },
@@ -16,7 +17,7 @@ export default {
         // Fuente para títulos
         display: ['Anton', 'sans-serif'],
         // Fuente para texto/cuerpo
-        sans: ['Nunito', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
       },
       keyframes: {
         float: {

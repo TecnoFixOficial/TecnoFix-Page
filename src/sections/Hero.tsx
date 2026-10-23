@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom'
 import { WHATSAPP_URL } from '@/data/site'
 import { HeroBackground } from '@/components/HeroBackground'
-import {
-  ArrowRightIcon,
-  ShieldCheckIcon,
-  WhatsAppIcon,
-} from '@/components/icons'
+import { ShieldCheckIcon, WhatsAppIcon } from '@/components/icons'
 
 export function Hero() {
   return (
@@ -16,14 +12,12 @@ export function Hero() {
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
         {/* Columna de texto */}
         <div className="flex flex-col items-start">
-          <span className="mb-5 inline-flex animate-fade-up items-center gap-2 rounded-full border border-brand-cyan/40 bg-brand-cyan/10 px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-[0.15em] text-brand-purple">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" />
-            Servicio técnico y desarrollo
-          </span>
-
           <h1 className="max-w-xl animate-fade-up font-display text-5xl uppercase leading-[0.95] text-brand-purple [animation-delay:100ms] sm:text-6xl">
             Reparamos tu equipo y{' '}
-            <span className="text-brand-cyan">creamos tu software</span>
+            {/* Marcador cian detrás del texto (el cian como texto no se lee sobre claro) */}
+            <span className="box-decoration-clone bg-[linear-gradient(to_top,rgb(2_197_206_/_0.45)_0.3em,transparent_0.3em)]">
+              creamos tu software
+            </span>
           </h1>
 
           <p className="mt-6 max-w-md animate-fade-up font-sans text-lg text-brand-ink/70 [animation-delay:200ms]">
@@ -37,22 +31,21 @@ export function Hero() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-sans font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-brand-ink hover:shadow-lg"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-sans font-bold text-white transition-colors hover:bg-brand-ink"
             >
               <WhatsAppIcon className="h-5 w-5" />
               Cotizar por WhatsApp
             </a>
             <Link
               to="/servicio-tecnico"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-brand-purple/20 px-6 py-3 font-sans font-bold text-brand-purple transition-all hover:border-brand-purple hover:bg-brand-purple/5"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-brand-purple/20 px-6 py-3 font-sans font-bold text-brand-purple transition-colors hover:border-brand-purple"
             >
               Ver servicios
-              <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
 
           <div className="mt-8 flex animate-fade-up items-center gap-2 font-sans text-sm text-brand-ink/60 [animation-delay:400ms]">
-            <ShieldCheckIcon className="h-5 w-5 text-brand-cyan" />
+            <ShieldCheckIcon className="h-5 w-5 text-brand-purple" />
             Diagnóstico honesto y trato directo con el técnico.
           </div>
         </div>

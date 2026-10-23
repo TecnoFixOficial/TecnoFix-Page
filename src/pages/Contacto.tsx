@@ -1,15 +1,13 @@
 /**
- * Página de Contacto: datos reales, redes y formulario de correo.
+ * Página de Contacto: WhatsApp como vía principal, el resto de datos en
+ * una lista simple, y el formulario de correo.
  */
+import type { ReactNode } from 'react'
 import { SITE, WHATSAPP_URL, MAPS_URL, DIRECCION_TEXTO } from '@/data/site'
 import { PageHero } from '@/components/PageHero'
 import { ContactForm } from '@/components/ContactForm'
 import {
   WhatsAppIcon,
-  MailIcon,
-  PhoneCallIcon,
-  MapPinIcon,
-  ClockIcon,
   FacebookIcon,
   InstagramIcon,
   TikTokIcon,
@@ -24,136 +22,100 @@ const REDES = [
 /** Teléfono formateado para mostrar: 2201012991 -> 220 101 2991 */
 const telFmt = SITE.telefono.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3')
 
+const enlace =
+  'font-semibold text-brand-purple underline decoration-brand-purple/30 underline-offset-4 hover:decoration-brand-purple'
+
+/** Fila de la lista de datos: etiqueta a la izquierda, valor a la derecha. */
+function Dato({ etiqueta, children }: { etiqueta: string; children: ReactNode }) {
+  return (
+    <div className="grid gap-1 border-b border-brand-ink/10 py-4 last:border-0 sm:grid-cols-[7rem_1fr] sm:gap-4">
+      <dt className="font-sans text-sm font-bold text-brand-ink/60">{etiqueta}</dt>
+      <dd className="font-sans text-brand-ink">{children}</dd>
+    </div>
+  )
+}
+
 export function Contacto() {
   return (
     <>
       <PageHero
-        eyebrow="Contacto"
+        tema="contacto"
+        seccion="Contacto"
         titulo="Hablemos"
-        descripcion="¿Una reparación o un proyecto de software? Escríbenos por el medio que prefieras y te atendemos con gusto."
+        descripcion="¿Una reparación o un proyecto de software? Escríbenos por el medio que prefieras."
       />
 
       <section className="bg-brand-cream py-16 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-8 px-6 lg:grid-cols-2">
-          {/* Columna de datos */}
-          <div className="flex flex-col gap-4">
-            {/* WhatsApp destacado */}
+        <div className="mx-auto grid max-w-6xl items-start gap-12 px-6 lg:grid-cols-2">
+          <div>
+            {/* WhatsApp: la vía más rápida */}
+            <h2 className="font-display text-4xl uppercase leading-tight text-brand-purple">
+              La forma más rápida
+            </h2>
+            <p className="mt-3 max-w-md font-sans text-brand-ink/70">
+              Escríbenos por WhatsApp y te respondemos en nuestro horario de
+              atención.
+            </p>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border border-brand-ink/5 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+              className="mt-6 inline-flex items-center gap-3 rounded-full bg-brand-purple px-6 py-3.5 font-sans font-bold text-white transition-colors hover:bg-brand-ink"
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-cyan/10 text-brand-cyan transition-colors group-hover:bg-brand-cyan group-hover:text-white">
-                <WhatsAppIcon className="h-6 w-6" />
-              </span>
-              <span>
-                <span className="block font-display text-lg uppercase tracking-wide text-brand-purple">
-                  WhatsApp
-                </span>
-                <span className="font-sans text-sm text-brand-ink/60">
-                  {telFmt} · respuesta rápida
-                </span>
-              </span>
+              <WhatsAppIcon className="h-5 w-5" />
+              WhatsApp {telFmt}
             </a>
 
-            {/* Teléfono */}
-            <a
-              href={`tel:+52${SITE.telefono}`}
-              className="group flex items-center gap-4 rounded-2xl border border-brand-ink/5 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-cyan/10 text-brand-cyan transition-colors group-hover:bg-brand-cyan group-hover:text-white">
-                <PhoneCallIcon className="h-6 w-6" />
-              </span>
-              <span>
-                <span className="block font-display text-lg uppercase tracking-wide text-brand-purple">
-                  Teléfono
-                </span>
-                <span className="font-sans text-sm text-brand-ink/60">
+            {/* Resto de datos */}
+            <dl className="mt-10 border-t border-brand-ink/10">
+              <Dato etiqueta="Teléfono">
+                <a href={`tel:+52${SITE.telefono}`} className={enlace}>
                   {telFmt}
-                </span>
-              </span>
-            </a>
-
-            {/* Correo */}
-            <a
-              href={`mailto:${SITE.email}`}
-              className="group flex items-center gap-4 rounded-2xl border border-brand-ink/5 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-cyan/10 text-brand-cyan transition-colors group-hover:bg-brand-cyan group-hover:text-white">
-                <MailIcon className="h-6 w-6" />
-              </span>
-              <span>
-                <span className="block font-display text-lg uppercase tracking-wide text-brand-purple">
-                  Correo
-                </span>
-                <span className="font-sans text-sm text-brand-ink/60">
+                </a>
+              </Dato>
+              <Dato etiqueta="Correo">
+                <a href={`mailto:${SITE.email}`} className={enlace}>
                   {SITE.email}
-                </span>
-              </span>
-            </a>
-
-            {/* Ubicación y horario */}
-            <div className="rounded-2xl border border-brand-ink/5 bg-white p-5 shadow-sm">
-              <div className="flex items-start gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-cyan/10 text-brand-cyan">
-                  <MapPinIcon className="h-6 w-6" />
-                </span>
-                <div>
-                  <span className="block font-display text-lg uppercase tracking-wide text-brand-purple">
-                    Visítanos
+                </a>
+              </Dato>
+              <Dato etiqueta="Dirección">
+                <span className="block">{DIRECCION_TEXTO}</span>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-1 inline-block ${enlace}`}
+                >
+                  Cómo llegar
+                </a>
+              </Dato>
+              <Dato etiqueta="Horario">
+                {SITE.horario.map((h) => (
+                  <span key={h.dias} className="block">
+                    {h.dias}: {h.horas}
                   </span>
-                  <a
-                    href={MAPS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-sans text-sm text-brand-ink/60 hover:text-brand-cyan"
-                  >
-                    {DIRECCION_TEXTO}
-                  </a>
-                  <div className="mt-3 flex items-start gap-2 font-sans text-sm text-brand-ink/60">
-                    <ClockIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" />
-                    <div className="space-y-0.5">
-                      {SITE.horario.map((h) => (
-                        <p key={h.dias}>
-                          <span className="font-semibold text-brand-ink/75">
-                            {h.dias}:
-                          </span>{' '}
-                          {h.horas}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Redes */}
-            <div className="rounded-2xl border border-brand-ink/5 bg-white p-5 shadow-sm">
-              <span className="mb-3 block font-display text-lg uppercase tracking-wide text-brand-purple">
-                Síguenos
-              </span>
-              <div className="flex gap-3">
-                {REDES.map(({ nombre, url, Icon }) => (
-                  <a
-                    key={nombre}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={nombre}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-purple/5 text-brand-purple transition-all hover:-translate-y-0.5 hover:bg-brand-purple hover:text-white"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
                 ))}
-              </div>
-            </div>
+              </Dato>
+              <Dato etiqueta="Redes">
+                <span className="flex flex-wrap gap-x-5 gap-y-2">
+                  {REDES.map(({ nombre, url, Icon }) => (
+                    <a
+                      key={nombre}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-1.5 ${enlace}`}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {nombre}
+                    </a>
+                  ))}
+                </span>
+              </Dato>
+            </dl>
           </div>
 
-          {/* Columna del formulario */}
-          <div>
-            <ContactForm />
-          </div>
+          <ContactForm />
         </div>
       </section>
     </>

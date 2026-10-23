@@ -41,7 +41,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={nombre}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/70 transition-all hover:-translate-y-0.5 hover:bg-brand-cyan hover:text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/70 transition-colors hover:bg-brand-cyan hover:text-brand-ink"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -51,7 +51,7 @@ export function Footer() {
 
           {/* Navegación */}
           <div>
-            <h3 className="font-display text-sm uppercase tracking-[0.15em] text-brand-cyan">
+            <h3 className="font-sans text-base font-bold text-white">
               Navegación
             </h3>
             <ul className="mt-4 space-y-2">
@@ -70,7 +70,7 @@ export function Footer() {
 
           {/* Contacto */}
           <div>
-            <h3 className="font-display text-sm uppercase tracking-[0.15em] text-brand-cyan">
+            <h3 className="font-sans text-base font-bold text-white">
               Contacto
             </h3>
             <ul className="mt-4 space-y-3 font-sans text-sm text-white/70">
@@ -108,7 +108,7 @@ export function Footer() {
 
           {/* Ubicación y horario */}
           <div>
-            <h3 className="font-display text-sm uppercase tracking-[0.15em] text-brand-cyan">
+            <h3 className="font-sans text-base font-bold text-white">
               Visítanos
             </h3>
             <a

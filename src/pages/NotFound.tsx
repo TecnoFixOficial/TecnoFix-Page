@@ -96,7 +96,7 @@ export function NotFound() {
 
       <Link
         to="/"
-        className="relative z-10 mt-8 inline-flex animate-fade-up items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-sans font-bold text-white shadow-md transition-all [animation-delay:300ms] hover:-translate-y-0.5 hover:bg-brand-ink hover:shadow-lg"
+        className="relative z-10 mt-8 inline-flex animate-fade-up items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-sans font-bold text-white transition-colors [animation-delay:300ms] hover:bg-brand-ink"
       >
         Volver al inicio
       </Link>

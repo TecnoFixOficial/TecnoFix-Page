@@ -12,7 +12,8 @@ export function AvisoPrivacidad() {
   return (
     <>
       <PageHero
-        eyebrow="Legal"
+        tema="legal"
+        seccion="Aviso de privacidad"
         titulo="Aviso de privacidad"
         descripcion="Cómo tratamos y protegemos tus datos personales en TecnoFix."
       />

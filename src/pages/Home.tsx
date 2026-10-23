@@ -4,12 +4,16 @@
  */
 import { Hero } from '@/sections/Hero'
 import { Services } from '@/sections/Services'
+import { Faq } from '@/sections/Faq'
+import { Location } from '@/sections/Location'
 
 export function Home() {
   return (
     <>
       <Hero />
       <Services />
+      <Faq />
+      <Location />
     </>
   )
 }

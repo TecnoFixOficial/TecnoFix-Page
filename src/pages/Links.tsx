@@ -40,7 +40,7 @@ const REDES: { label: string; href: string; Icon: Icon }[] = [
 
 /** Estilo común de los botones secundarios. */
 const secundario =
-  'relative flex h-[4.25rem] w-full items-center justify-center rounded-xl border border-brand-purple/15 bg-white px-14 text-lg font-bold text-brand-purple transition-colors duration-200 hover:border-brand-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan'
+  'relative flex h-[4.25rem] w-full items-center justify-center rounded-xl border border-brand-purple/15 bg-white px-14 text-lg font-bold text-brand-purple transition-colors duration-200 hover:border-brand-purple focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan'
 
 /** Ícono alineado a la izquierda dentro del botón. */
 const iconoIzq = 'absolute left-5 h-6 w-6'
@@ -116,7 +116,7 @@ export function Links() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="flex h-12 w-12 items-center justify-center rounded-full text-brand-purple transition-colors duration-200 hover:text-brand-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-cyan"
+              className="flex h-12 w-12 items-center justify-center rounded-full text-brand-purple transition-colors duration-200 hover:text-brand-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-cyan"
             >
               <Icon className="h-7 w-7" />
             </a>
