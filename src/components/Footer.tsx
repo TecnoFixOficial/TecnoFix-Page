@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import logoBlanco from '@/assets/TECNOFIX Blanco.svg'
 import { SITE, WHATSAPP_URL, MAPS_URL, DIRECCION_TEXTO } from '@/data/site'
 import { NAV_PAGES } from '@/navigation'
+import { HAY_RASTREO } from '@/data/rastreo'
+import { abrirPreferencias } from '@/lib/consentimiento'
 import {
   WhatsAppIcon,
   MailIcon,
@@ -140,12 +142,36 @@ export function Footer() {
           <p className="font-sans text-xs text-white/50">
             © {new Date().getFullYear()} TecnoFix · Tecnología integral
           </p>
-          <Link
-            to="/aviso-de-privacidad"
-            className="font-sans text-xs text-white/50 transition-colors hover:text-white"
-          >
-            Aviso de privacidad
-          </Link>
+          <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 font-sans text-xs text-white/50">
+            <li>
+              <Link
+                to="/aviso-de-privacidad"
+                className="transition-colors hover:text-white"
+              >
+                Aviso de privacidad
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/terminos-y-condiciones"
+                className="transition-colors hover:text-white"
+              >
+                Términos y condiciones
+              </Link>
+            </li>
+            {/* Solo aparece si hay analítica configurada en el .env */}
+            {HAY_RASTREO && (
+              <li>
+                <button
+                  type="button"
+                  onClick={abrirPreferencias}
+                  className="transition-colors hover:text-white"
+                >
+                  Preferencias de cookies
+                </button>
+              </li>
+            )}
+          </ul>
         </div>
       </div>
     </footer>

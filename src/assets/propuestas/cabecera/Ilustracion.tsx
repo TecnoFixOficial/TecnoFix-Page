@@ -2,7 +2,8 @@
  * Propuesta E — "Ilustración de línea".
  * Franja púrpura con un dibujo de trazo fino a la derecha, distinto para
  * cada página: celular abierto con desarmador (técnico), ventana con código
- * (desarrollo), conversación (contacto) y documento protegido (legal).
+ * (desarrollo), conversación (contacto), documento protegido (legal) y
+ * documento firmado (términos).
  * Trazos en blanco tenue; un solo detalle en cian por dibujo.
  */
 import type { ReactNode } from 'react'
@@ -72,6 +73,19 @@ const DIBUJOS: Record<Tema, ReactNode> = {
         className={acento}
       />
       <path d="M129 152l8 8 15-17" className={acento} />
+    </>
+  ),
+  // Documento con esquina doblada y línea de firma.
+  terminos: (
+    <>
+      <path d="M50 22h70l30 30v126H50z" className={linea} />
+      <path d="M120 22v30h30" className={linea} />
+      <path d="M66 70h52M66 88h68M66 106h60M66 124h40" className={linea} />
+      <path d="M66 160h68" className={linea} />
+      <path
+        d="M70 152c6-10 11-11 12-4s5 3 9-4 6 1 8 6 6-8 11-4 7 4 14 0"
+        className={acento}
+      />
     </>
   ),
 }

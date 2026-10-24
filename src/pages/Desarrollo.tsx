@@ -33,7 +33,7 @@ const ETAPAS = [
 const EJEMPLO = [
   'Se adapta a celular, tablet y computadora',
   'Formulario de contacto que llega directo al correo del negocio',
-  'Página de enlaces para el código QR del local',
+  'Página de enlaces para el código QR del establecimiento',
   'Ubicación, horario y datos del negocio listos para Google',
   'Aviso de "en mantenimiento" que se activa sin tocar el diseño',
 ]
@@ -47,7 +47,7 @@ export function Desarrollo() {
         tema="desarrollo"
         seccion="Desarrollo"
         titulo="Páginas web y apps para tu negocio"
-        descripcion="Diseñamos y desarrollamos páginas web y aplicaciones para Android. Cada proyecto se cotiza a la medida, según lo que necesitas."
+        descripcion="Diseñamos y desarrollamos páginas web y aplicaciones para Android y iPhone. Cada proyecto se cotiza a la medida, según lo que necesitas."
       />
 
       {/* Qué hacemos: una fila por servicio */}

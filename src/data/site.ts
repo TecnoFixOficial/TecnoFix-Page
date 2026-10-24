@@ -7,6 +7,14 @@
 export const SITE = {
   nombre: 'TecnoFix',
 
+  // Titular legal del negocio (aparece en el aviso de privacidad y en los
+  // términos). Cuando se constituya la persona moral, cambiar por la razón
+  // social y actualizar la fecha de ambos documentos.
+  responsable: {
+    nombre: 'José David Martínez Nájera',
+    figura: 'persona física',
+  },
+
   // Dominio oficial del sitio.
   url: 'https://tecnofix.tech',
 
@@ -17,7 +25,7 @@ export const SITE = {
   telefono: '2201012991',
   email: 'contacto@tecnofix.tech',
 
-  // Local físico
+  // Establecimiento físico
   direccion: {
     calle: 'Av. 25 Poniente 917-B',
     colonia: 'Col. Chula Vista',
@@ -135,11 +143,11 @@ export const SERVICIOS: Servicio[] = [
   {
     area: 'Desarrollo',
     titulo: 'Apps móviles',
-    desc: 'Aplicaciones para Android hechas a tu medida.',
+    desc: 'Aplicaciones para Android y iPhone hechas a tu medida.',
     icon: 'mobile',
     // TODO: validar con TecnoFix qué incluye cada proyecto.
     incluye: [
-      'Apps para Android',
+      'Apps para Android y iOS (iPhone)',
       'Diseño de pantallas pensado para tus usuarios',
       'Desarrollo a partir de tu idea o proceso actual',
     ],

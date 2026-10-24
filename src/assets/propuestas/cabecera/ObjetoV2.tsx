@@ -4,14 +4,15 @@
  *   - técnico:    etiqueta con esquinas cortadas, ojal reforzado, hilo y sello
  *   - desarrollo: editor con números de línea y la línea activa resaltada
  *   - contacto:   chat con hora, palomitas de leído y barra para escribir
- *   - legal:      hojas encimadas con línea de firma y sello
+ *   - legal / terminos: hojas encimadas con línea de firma y sello
  * Se ve desde tablet (debajo del texto) y en escritorio va a la derecha.
  */
 import type { ReactNode } from 'react'
 import { BrandMark } from '@/components/BrandMark'
 import { CheckIcon, WhatsAppIcon } from '@/components/icons'
 import { SITE, WHATSAPP_MENSAJE } from '@/data/site'
-import { PRIVACIDAD_ACTUALIZACION } from '@/data/privacidad'
+import { PRIVACIDAD } from '@/data/privacidad'
+import { TERMINOS } from '@/data/terminos'
 import { Migas, type CabeceraProps, type Tema } from './comun'
 
 /** Etiqueta de reparación con forma de etiqueta de envío. */
@@ -165,15 +166,23 @@ function Chat() {
   )
 }
 
-/** Hojas del aviso encimadas, con firma y sello. */
-function Hojas() {
+/** Hojas de un documento legal encimadas, con firma y sello. */
+function Hojas({
+  titulo,
+  fecha,
+  sello,
+}: {
+  titulo: string
+  fecha: string
+  sello: [string, string]
+}) {
   return (
     <div className="relative">
       <div className="absolute inset-0 rotate-6 rounded-sm border border-brand-ink/10 bg-white" />
       <div className="absolute inset-0 -rotate-3 rounded-sm border border-brand-ink/10 bg-white" />
       <div className="relative w-72 rotate-1 rounded-sm border border-brand-ink/15 bg-white px-7 py-8 font-sans">
-        <p className="font-display text-xl uppercase text-brand-purple">Aviso de privacidad</p>
-        <p className="mt-1 text-xs text-brand-ink/60">Actualizado: {PRIVACIDAD_ACTUALIZACION}</p>
+        <p className="font-display text-xl uppercase text-brand-purple">{titulo}</p>
+        <p className="mt-1 text-xs text-brand-ink/60">Actualizado: {fecha}</p>
         <div className="mt-5 space-y-2.5" aria-hidden>
           {['w-full', 'w-11/12', 'w-full', 'w-3/4', 'w-full'].map((w, i) => (
             <div key={i} className={`h-1.5 rounded-full bg-brand-ink/10 ${w}`} />
@@ -196,8 +205,8 @@ function Hojas() {
         {/* Sello */}
         <div className="absolute -bottom-4 -right-4 flex h-20 w-20 -rotate-12 flex-col items-center justify-center rounded-full border-2 border-brand-purple bg-white text-brand-purple">
           <CheckIcon className="h-6 w-6" />
-          <span className="text-[10px] font-extrabold leading-tight">Datos</span>
-          <span className="text-[10px] font-extrabold leading-tight">protegidos</span>
+          <span className="text-[10px] font-extrabold leading-tight">{sello[0]}</span>
+          <span className="text-[10px] font-extrabold leading-tight">{sello[1]}</span>
         </div>
       </div>
     </div>
@@ -208,7 +217,20 @@ const OBJETOS: Record<Tema, ReactNode> = {
   tecnico: <Etiqueta />,
   desarrollo: <Editor />,
   contacto: <Chat />,
-  legal: <Hojas />,
+  legal: (
+    <Hojas
+      titulo="Aviso de privacidad"
+      fecha={PRIVACIDAD.actualizacion}
+      sello={['Datos', 'protegidos']}
+    />
+  ),
+  terminos: (
+    <Hojas
+      titulo="Términos y condiciones"
+      fecha={TERMINOS.actualizacion}
+      sello={['Reglas', 'claras']}
+    />
+  ),
 }
 
 export function ObjetoV2({ tema, seccion, titulo, descripcion }: CabeceraProps) {

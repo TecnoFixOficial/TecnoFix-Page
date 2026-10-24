@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { SITE } from '@/data/site'
 import { CheckIcon } from '@/components/icons'
 
@@ -235,7 +236,14 @@ export function ContactForm() {
       </button>
 
       <p className="mt-3 text-center font-sans text-xs text-brand-ink/60">
-        Tu mensaje llega directo a {SITE.email}
+        Tu mensaje llega directo a {SITE.email}. Al enviarlo aceptas el{' '}
+        <Link
+          to="/aviso-de-privacidad"
+          className="font-semibold text-brand-purple underline decoration-brand-purple/30 underline-offset-4 hover:decoration-brand-purple"
+        >
+          aviso de privacidad
+        </Link>
+        .
       </p>
     </form>
   )

@@ -3,6 +3,7 @@
  * Qué reparamos (por tipo de equipo), cómo funciona el servicio
  * (presentado como una orden de servicio del taller) y la garantía.
  */
+import { Link } from 'react-router-dom'
 import { SERVICIOS, GARANTIAS, NOTA_MARCAS } from '@/data/site'
 import { SERVICE_ICONS } from '@/components/icons'
 import { PageHero } from '@/components/PageHero'
@@ -130,6 +131,16 @@ export function ServicioTecnico() {
             <p className="mt-4 max-w-sm font-sans text-lg text-brand-ink/70">
               Todas las reparaciones tienen garantía. Al cotizar te
               confirmamos la de tu caso.
+            </p>
+            <p className="mt-4 max-w-sm font-sans text-brand-ink/70">
+              Qué cubre y cuándo se pierde está en los{' '}
+              <Link
+                to="/terminos-y-condiciones#garantia"
+                className="font-semibold text-brand-purple underline decoration-brand-purple/30 underline-offset-4 hover:decoration-brand-purple"
+              >
+                términos y condiciones
+              </Link>
+              .
             </p>
           </div>
 

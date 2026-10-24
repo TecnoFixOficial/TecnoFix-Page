@@ -15,6 +15,7 @@ import { ServicioTecnico } from '@/pages/ServicioTecnico'
 import { Desarrollo } from '@/pages/Desarrollo'
 import { Contacto } from '@/pages/Contacto'
 import { AvisoPrivacidad } from '@/pages/AvisoPrivacidad'
+import { TerminosCondiciones } from '@/pages/TerminosCondiciones'
 import { Links } from '@/pages/Links'
 
 export type PageDef = {
@@ -70,6 +71,13 @@ export const PAGES: PageDef[] = [
     path: '/aviso-de-privacidad',
     label: 'Aviso de privacidad',
     Component: AvisoPrivacidad,
+    enabled: true,
+    showInNav: false, // accesible por URL y footer, pero no en el menú
+  },
+  {
+    path: '/terminos-y-condiciones',
+    label: 'Términos y condiciones',
+    Component: TerminosCondiciones,
     enabled: true,
     showInNav: false, // accesible por URL y footer, pero no en el menú
   },

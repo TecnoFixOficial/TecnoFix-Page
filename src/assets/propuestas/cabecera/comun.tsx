@@ -4,7 +4,7 @@
 import { Link } from 'react-router-dom'
 
 /** De qué trata la página; algunos diseños dibujan algo propio de cada tema. */
-export type Tema = 'tecnico' | 'desarrollo' | 'contacto' | 'legal'
+export type Tema = 'tecnico' | 'desarrollo' | 'contacto' | 'legal' | 'terminos'
 
 export type CabeceraProps = {
   tema: Tema

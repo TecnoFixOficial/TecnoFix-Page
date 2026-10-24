@@ -1,7 +1,7 @@
 import { SITE, MAPS_URL, MAPS_EMBED_URL } from '@/data/site'
 import { MapPinIcon } from '@/components/icons'
 
-/** Ubicación del local y horario de atención, con mapa. */
+/** Ubicación del establecimiento y horario de atención, con mapa. */
 export function Location() {
   return (
     <section id="ubicacion" className="bg-white py-20 md:py-24">
