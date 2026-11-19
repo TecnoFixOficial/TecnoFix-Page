@@ -2,12 +2,13 @@
  * Propuesta F2 — "Objeto característico", versión 2.
  * Mismos objetos que F, más trabajados y apoyados sobre un panel crema:
  *   - técnico:    etiqueta con esquinas cortadas, ojal reforzado, hilo y sello
- *   - desarrollo: editor con números de línea y la línea activa resaltada
+ *   - desarrollo: editor con números de línea y la línea activa resaltada;
+ *                 se puede cambiar de pestaña y de color en estilos.css
  *   - contacto:   chat con hora, palomitas de leído y barra para escribir
  *   - legal / terminos: hojas encimadas con línea de firma y sello
  * Se ve desde tablet (debajo del texto) y en escritorio va a la derecha.
  */
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { BrandMark } from '@/components/BrandMark'
 import { CheckIcon, WhatsAppIcon } from '@/components/icons'
 import { SITE, WHATSAPP_MENSAJE } from '@/data/site'
@@ -67,41 +68,127 @@ function Etiqueta() {
   )
 }
 
-/** Editor de código con números de línea. */
+/** Colores que ofrece el muestrario de estilos.css (el primero es el cian de marca). */
+const COLORES_EDITOR = [
+  { nombre: 'Cian', valor: '#02C5CE' },
+  { nombre: 'Lila', valor: '#A5A3F0' },
+  { nombre: 'Coral', valor: '#FF8A7A' },
+  { nombre: 'Verde', valor: '#4ADE80' },
+  { nombre: 'Ámbar', valor: '#FBBF24' },
+]
+
+/**
+ * Editor de código con números de línea. Interactivo: las pestañas cambian
+ * de archivo y en estilos.css el cuadrito de color abre un muestrario que
+ * cambia el acento del editor.
+ */
 function Editor() {
-  const k = 'text-brand-cyan' // etiquetas
-  const a = 'text-white/60' // atributos
-  const lineas: ReactNode[] = [
-    <span className={k}>{'<Pagina>'}</span>,
+  const [archivo, setArchivo] = useState<'tsx' | 'css'>('tsx')
+  const [color, setColor] = useState(COLORES_EDITOR[0].valor)
+  const [muestrario, setMuestrario] = useState(false)
+
+  const c = { color } // etiquetas / selectores
+  const a = 'text-white/60' // atributos / propiedades
+  const tsx: ReactNode[] = [
+    <span style={c}>{'<Pagina>'}</span>,
     <>
       {'  '}
-      <span className={k}>{'<Encabezado'}</span> <span className={a}>logo</span>
-      <span className={k}>{' />'}</span>
+      <span style={c}>{'<Encabezado'}</span> <span className={a}>logo</span>
+      <span style={c}>{' />'}</span>
     </>,
     <>
       {'  '}
-      <span className={k}>{'<Servicios'}</span>{' '}
+      <span style={c}>{'<Servicios'}</span>{' '}
       <span className={a}>{'lista={tusServicios}'}</span>
-      <span className={k}>{' />'}</span>
+      <span style={c}>{' />'}</span>
     </>,
     <>
       {'  '}
-      <span className={k}>{'<BotonWhatsApp'}</span>
-      <span className={k}>{' />'}</span>
+      <span style={c}>{'<BotonWhatsApp'}</span>
+      <span style={c}>{' />'}</span>
     </>,
     <>
       {'  '}
-      <span className={k}>{'<Ubicacion'}</span> <span className={a}>mapa</span>
-      <span className={k}>{' />'}</span>
+      <span style={c}>{'<Ubicacion'}</span> <span className={a}>mapa</span>
+      <span style={c}>{' />'}</span>
     </>,
-    <span className={k}>{'</Pagina>'}</span>,
+    <span style={c}>{'</Pagina>'}</span>,
   ]
-  const activa = 3 // línea resaltada (índice)
+  const css: ReactNode[] = [
+    <span className="text-white/35">{'/* prueba cambiar el color */'}</span>,
+    <>
+      <span style={c}>.boton-whatsapp</span> {'{'}
+    </>,
+    <span className="relative">
+      {'  '}
+      <span className={a}>background</span>:{' '}
+      <button
+        type="button"
+        onClick={() => setMuestrario((v) => !v)}
+        aria-expanded={muestrario}
+        aria-label="Cambiar color"
+        className="inline-block h-3 w-3 translate-y-px cursor-pointer rounded-sm ring-1 ring-white/40 transition hover:scale-125 hover:ring-white"
+        style={{ backgroundColor: color }}
+      />{' '}
+      {color};
+      {muestrario && (
+        <span className="absolute left-24 top-full z-10 mt-1 flex gap-2 rounded-md border border-white/10 bg-brand-purple p-2 shadow-lg">
+          {COLORES_EDITOR.map((col) => (
+            <button
+              key={col.valor}
+              type="button"
+              aria-label={col.nombre}
+              title={col.nombre}
+              onClick={() => {
+                setColor(col.valor)
+                setMuestrario(false)
+              }}
+              className={`h-5 w-5 cursor-pointer rounded-sm transition hover:scale-110 ${
+                col.valor === color ? 'ring-2 ring-white' : 'ring-1 ring-white/20'
+              }`}
+              style={{ backgroundColor: col.valor }}
+            />
+          ))}
+        </span>
+      )}
+    </span>,
+    <>
+      {'  '}
+      <span className={a}>color</span>: #1B1A40;
+    </>,
+    <>
+      {'  '}
+      <span className={a}>border-radius</span>: 999px;
+    </>,
+    '}',
+  ]
+  const lineas = archivo === 'tsx' ? tsx : css
+  const activa = archivo === 'tsx' ? 3 : 2 // línea resaltada (índice)
+  const pestana = (id: 'tsx' | 'css', nombre: string) => (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={archivo === id}
+      onClick={() => {
+        setArchivo(id)
+        setMuestrario(false)
+      }}
+      className={`cursor-pointer border-b-2 px-4 py-2 transition ${
+        archivo === id ? 'text-white' : 'border-transparent text-white/40 hover:text-white/70'
+      }`}
+      style={archivo === id ? { borderColor: color } : undefined}
+    >
+      {nombre}
+    </button>
+  )
   return (
-    <div className="w-[25rem] overflow-hidden rounded-lg bg-brand-ink font-mono text-[13px] leading-7">
-      <div className="flex border-b border-white/10 font-sans text-xs font-semibold">
-        <span className="border-b-2 border-brand-cyan px-4 py-2 text-white">TuNegocio.tsx</span>
-        <span className="px-4 py-2 text-white/40">estilos.css</span>
+    <div
+      className="w-[25rem] overflow-hidden rounded-lg bg-brand-ink font-mono text-[13px] leading-7"
+      onKeyDown={(e) => e.key === 'Escape' && setMuestrario(false)}
+    >
+      <div role="tablist" className="flex border-b border-white/10 font-sans text-xs font-semibold">
+        {pestana('tsx', 'TuNegocio.tsx')}
+        {pestana('css', 'estilos.css')}
       </div>
       <pre className="py-3 text-white">
         <code>
@@ -246,9 +333,9 @@ export function ObjetoV2({ tema, seccion, titulo, descripcion }: CabeceraProps) 
             {descripcion}
           </p>
         </div>
-        {/* Panel crema donde descansa el objeto */}
+        {/* Panel crema donde descansa el objeto (el editor es interactivo, no se oculta) */}
         <div
-          aria-hidden
+          aria-hidden={tema !== 'desarrollo'}
           className="hidden items-center justify-center rounded-2xl bg-brand-cream px-10 py-12 sm:flex lg:min-h-[22rem] lg:w-[30rem]"
         >
           {OBJETOS[tema]}
