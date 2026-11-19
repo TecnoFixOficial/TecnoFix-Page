@@ -45,28 +45,28 @@ export function Services() {
           </p>
         </div>
 
-        {/* Servicio técnico */}
+        {/* Desarrollo */}
         <AreaHeader
-          titulo="Servicio técnico"
-          to="/servicio-tecnico"
-          enlace="Ver reparaciones y garantía"
+          titulo="Desarrollo de software"
+          to="/desarrollo"
+          enlace="Ver cómo trabajamos"
         />
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {tecnico.map((s) => (
+        <div className="grid gap-8 sm:grid-cols-2">
+          {desarrollo.map((s) => (
             <ServiceCard key={s.titulo} servicio={s} />
           ))}
         </div>
 
-        {/* Desarrollo */}
+        {/* Servicio técnico */}
         <div className="mt-16">
           <AreaHeader
-            titulo="Desarrollo de software"
-            to="/desarrollo"
-            enlace="Ver cómo trabajamos"
+            titulo="Servicio técnico"
+            to="/servicio-tecnico"
+            enlace="Ver reparaciones y garantía"
           />
         </div>
-        <div className="grid gap-8 sm:grid-cols-2">
-          {desarrollo.map((s) => (
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {tecnico.map((s) => (
             <ServiceCard key={s.titulo} servicio={s} />
           ))}
         </div>
