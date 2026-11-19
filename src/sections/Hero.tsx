@@ -13,17 +13,17 @@ export function Hero() {
         {/* Columna de texto */}
         <div className="flex flex-col items-start">
           <h1 className="max-w-xl animate-fade-up font-display text-5xl uppercase leading-[0.95] text-brand-purple [animation-delay:100ms] sm:text-6xl">
-            Reparamos tu equipo y{' '}
+            creamos tu software y{' '}
             {/* Marcador cian detrás del texto (el cian como texto no se lee sobre claro) */}
             <span className="box-decoration-clone bg-[linear-gradient(to_top,rgb(2_197_206_/_0.45)_0.3em,transparent_0.3em)]">
-              creamos tu software
+              Reparamos tu equipo
             </span>
           </h1>
 
           <p className="mt-6 max-w-md animate-fade-up font-sans text-lg text-brand-ink/70 [animation-delay:200ms]">
-            Reparación de celulares y computadoras, mantenimiento de consolas y
-            desarrollo de páginas web y apps. Todo en un solo lugar, con
-            atención cercana.
+            Desarrollo de software y sistemas a tu medida, 
+            reparación y mantenimiento de celulares y computadoras.
+            Todo en un solo lugar, con atención cercana.
           </p>
 
           <div className="mt-8 flex animate-fade-up flex-wrap items-center gap-3 [animation-delay:300ms]">
